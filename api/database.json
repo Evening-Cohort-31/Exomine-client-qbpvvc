@@ -1,4 +1,101 @@
 {
-    "minerals":[],
-    "facilityMinerals": []
+  "minerals": [
+    {
+      "id": 1,
+      "name": "Iron"
+    },
+    {
+      "id": 2,
+      "name": "Gold"
+    },
+    {
+      "id": 3,
+      "name": "Titanium"
+    }
+  ],
+  "facilities": [
+    {
+      "id": 1,
+      "name": "Mining Outpost Alpha",
+      "active": true
+    },
+    {
+      "id": 2,
+      "name": "Smelting Center Beta",
+      "active": true
+    },
+    {
+      "id": 3,
+      "name": "Storage Depot Gamma",
+      "active": false
+    }
+  ],
+  "governors": [
+    {
+      "id": 1,
+      "name": "John Smith",
+      "active": true,
+      "colonyId": 1
+    },
+    {
+      "id": 2,
+      "name": "Jane Doe",
+      "active": true,
+      "colonyId": 2
+    },
+    {
+      "id": 3,
+      "name": "Alex Ray",
+      "active": false,
+      "colonyId": 3
+    }
+  ],
+  "colonies": [
+    {
+      "id": 1,
+      "name": "Olympus Mons Settlement"
+    },
+    {
+      "id": 2,
+      "name": "Valles Marineris Base"
+    },
+    {
+      "id": 3,
+      "name": "Hellas Planitia Colony"
+    }
+  ],
+  "facilityMinerals": [
+    {
+      "facilityId": 1,
+      "mineralId": 1,
+      "quantity": 1500
+    },
+    {
+      "facilityId": 2,
+      "mineralId": 2,
+      "quantity": 250
+    },
+    {
+      "facilityId": 1,
+      "mineralId": 3,
+      "quantity": 700
+    }
+  ],
+  "colonyMinerals": [
+    {
+      "colonyId": 1,
+      "mineralId": 2,
+      "quantity": 50
+    },
+    {
+      "colonyId": 2,
+      "mineralId": 1,
+      "quantity": 300
+    },
+    {
+      "colonyId": 3,
+      "mineralId": 3,
+      "quantity": 120
+    }
+  ]
 }
