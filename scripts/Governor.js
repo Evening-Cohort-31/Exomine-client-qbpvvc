@@ -13,7 +13,7 @@ export const Governor = async () => {
         // set the beginning of the HTML so that it will be a select dropdown menu that firstly displays "Choose a Governor"
     
     
-    const governorOptions = governor.map(governor => {
+    const governorOptions = governors.map(governor => {
         return `<option value="${governor.id}">${governor.name}</option>`
     })
 
