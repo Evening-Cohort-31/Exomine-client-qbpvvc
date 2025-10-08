@@ -7,7 +7,7 @@ export const Governor = async () => {
     const governors = await response.json()
     // defined function making sure to use async and await while defining the cariable of governors to hold the array that is imported from the database. 
 
-    let governorHTML =  `<select id="resource">
+    let governorHTML =  `<h2>Governors</h2><select id="resource">
         <option value="0">Choose a Governor...</option>`
 
         // set the beginning of the HTML so that it will be a select dropdown menu that firstly displays "Choose a Governor"

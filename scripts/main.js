@@ -1,6 +1,6 @@
-// import {Governor} from "./Governor.js"
+import { Governor } from "./Governor.js"
 // import {Facility} from "./Facility.js"
-// import {Minerals} from "./Minerals.js"
+import { Minerals } from "./Minerals.js"
 import { Colony } from "./Colony.js";
 // import {Cart} from "./Cart.js"
 
@@ -11,7 +11,7 @@ export const render = async () => {
         </header>
         <article class="selections">
             <section class="selections__governor">
-                $ {Governor()}
+                ${await Governor()}
             </section>
             <section class="selections__facilities">
                 $ {Facility()}
@@ -21,7 +21,7 @@ export const render = async () => {
                 ${await Colony()}
         </article>
         <article class="facility_inventory">
-                $ {Minerals()}
+                ${await Minerals()}
         </article>
         <article class="cart">
                 $ {Cart()}
