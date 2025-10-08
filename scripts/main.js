@@ -1,14 +1,11 @@
 // import {Governor} from "./Governor.js"
 // import {Facility} from "./Facility.js"
 // import {Minerals} from "./Minerals.js"
-// import {Colony} from "./Colony.js"
+import { Colony } from "./Colony.js";
 // import {Cart} from "./Cart.js"
 
-
-export const render = () => {
-
-
-    const html = `
+export const render = async () => {
+  const html = `
         <header>
             <h1>Solar System Mining Marketplace</h1>
         </header>
@@ -21,7 +18,7 @@ export const render = () => {
             </section>
         </article>
         <article class="colony_inventory">
-                $ {Colony()}
+                ${await Colony()}
         </article>
         <article class="facility_inventory">
                 $ {Minerals()}
@@ -29,12 +26,10 @@ export const render = () => {
         <article class="cart">
                 $ {Cart()}
         </article> 
-    `
+    `;
 
+  const body = document.querySelector("body");
+  body.innerHTML = html;
+};
 
-    const body = document.querySelector("body")
-    body.innerHTML = html
-}
-
-
-render()
+render();
