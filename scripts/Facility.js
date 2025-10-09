@@ -1,3 +1,5 @@
+import { getTransientState } from "./Cart.js";
+
 // State variables
 let apiData = {};
 let facilityId = null;
@@ -48,13 +50,15 @@ export function getAvailableMinerals(selectedFacilityId) {
 // Generate facility dropdown HTML
 export const Facility = async () => {
     await fetchDatabase()
+    const currentTransientState = getTransientState()
+    const currentFacility = currentTransientState.currentFacility
   const facilities = getActiveFacilities();
   
   return `
     <h2>Select Facility</h2>
-    <select id="facility">
+    <select class="facilitySelector">
       <option value="">-- Select a facility --</option>
-      ${facilities.map(facility => `<option value="${facility.id}" ${facility.id === facilityId? "selected": ""} >${facility.name}</option>`).join('')}
+      ${facilities.map(facility => `<option value="${facility.id}" ${facility.id === currentFacility ? "selected": ""} >${facility.name}</option>`).join('')}
     </select>
   `;
 };

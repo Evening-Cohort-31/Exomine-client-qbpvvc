@@ -1,8 +1,9 @@
 import { Governor } from "./Governor.js"
 import {Facility} from "./Facility.js"
-import { Minerals, updateCurrentFacility } from "./Minerals.js"
+import { Minerals } from "./Minerals.js"
 import { Colony } from "./Colony.js";
 import { Cart, updateTransientState } from "./Cart.js"
+import { handleSubmit } from "./CheckoutButton.js";
 
 export const render = async () => {
   const html = `
@@ -24,16 +25,18 @@ export const render = async () => {
                 ${await Minerals()}
         </article>
         <article class="cart">
-                $ {Cart()}
+                ${await Cart()}
         </article> 
     `;
 
   const body = document.querySelector("body");
   body.innerHTML = html;
-  document.querySelector("#facility").addEventListener("change", updateCurrentFacility)
   document.querySelectorAll(".mineralRadio").forEach(radio => {
     radio.addEventListener("click", (event) => updateTransientState(event, "mineral"))
   })
+  document.querySelector(".governorSelect").addEventListener("change", (event) => {updateTransientState(event, "governor")})
+  document.querySelector(".facilitySelector").addEventListener("change", (event) => {updateTransientState(event, "facility")})
+  document.querySelector("#submit").addEventListener("click", handleSubmit)
 };
 
 

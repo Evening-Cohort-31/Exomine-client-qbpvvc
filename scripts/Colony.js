@@ -1,17 +1,19 @@
-// import { fetchColonies } from "./database.json";
-
-// const colonies = fetchColonies();
+import { getTransientState } from "./Cart.js";
 
 export const Colony = async () => {
-  const response = await fetch("http://localhost:8088/colonies");
-  const colonies = await response.json();
+  const currentTransientState = getTransientState()
+  const currentGovernorId = currentTransientState.currentGovernor
 
-  let coloniesHTML = `<h2>Colonies</h2><select name="colony" > <option value="">Select a colony</option>`;
+  const response = await fetch(`http://localhost:8088/governors?id=${currentGovernorId}&_expand=colony`)
+  const currentGovernor = await response.json()
 
-  const colonyOptions = colonies.map((colony) => {
-    return `<option value= ${colony.id}>${colony.name}</option>`;
-  });
-  coloniesHTML += colonyOptions.join("");
-  coloniesHTML += "</select>";
+
+  let coloniesHTML = `<h2>${currentGovernor.length > 0 ? `${currentGovernor[0].colony.name + " Minerals"}` : "Colony Minerals"}</h2>`;
+
+  // const colonyOptions = colonies.map((colony) => {
+  //   return `<option value= ${colony.id} ${currentTransientState.currentColony === colony.id ? "selected" : ""}>${colony.name}</option>`;
+  // });
+  // coloniesHTML += colonyOptions.join("");
+  // coloniesHTML += "</select>";
   return coloniesHTML;
 };

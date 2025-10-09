@@ -1,20 +1,14 @@
 // Import render to rerender page on facility selection
-import { render } from "./main.js"
-
-// Temporary state to hold current facility selection 
-let currentFacilityId
-
-// Sets temporary facility state and rerenders page
-export const updateCurrentFacility = (e) => {
-    currentFacilityId = Number(e.target.value)
-    render()
-}
-
+import { getTransientState } from "./Cart.js"
 
 // Sets html for current facility Minerals
 export const Minerals = async () => {
     // Retrieve facilities and their minerals from the database
-    const response = await fetch("http://localhost:8088/facilities?_embed=facilityMinerals")     
+    const response = await fetch("http://localhost:8088/facilities?_embed=facilityMinerals") 
+    
+    const currentTransientState = getTransientState()
+    const currentFacilityId = currentTransientState.currentFacility
+
 
     // Start the mineral html
     let html = `<h3>Facility Minerals`
@@ -41,8 +35,9 @@ export const Minerals = async () => {
 
                     // Create a radio input for each mineral
                     currentMinerals = currentFacility.facilityMinerals.map(fm => minerals.find(mineral => mineral.id === fm.mineralId))
-                    currentMinerals.forEach(mineral => html += `<input class="mineralRadio" type="radio" id=${mineral.id} name="mineral" value="${mineral.id}"/><label for=${mineral.id}>${mineral.name}</label>`)
+                    currentMinerals.forEach(mineral => html += `<input class="mineralRadio" type="radio" id=${mineral.id} name="mineral" value=${mineral.id} ${currentTransientState.currentMineral === mineral.id ? "checked" : ""}/><label for=${mineral.id}>${mineral.name}</label>`)
                 }
+
         }
     }
     return html
