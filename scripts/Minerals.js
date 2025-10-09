@@ -41,7 +41,7 @@ export const Minerals = async () => {
 
                     // Create a radio input for each mineral
                     currentMinerals = currentFacility.facilityMinerals.map(fm => minerals.find(mineral => mineral.id === fm.mineralId))
-                    currentMinerals.forEach(mineral => html += `<input type="radio" id=${mineral.id} name="mineral" value="${mineral.id}"/><label for=${mineral.id}>${mineral.name}</label>`)
+                    currentMinerals.forEach(mineral => html += `<input class="mineralRadio" type="radio" id=${mineral.id} name="mineral" value="${mineral.id}"/><label for=${mineral.id}>${mineral.name}</label>`)
                 }
         }
     }
