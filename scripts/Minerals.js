@@ -38,7 +38,7 @@ export const Minerals = async () => {
                         const m = minerals.find(mineral => mineral.id === fm.mineralId)
                         return {id: m.id, name: m.name, quantity: fm.quantity}
                     })
-                    console.log(currentMinerals)
+
                     currentMinerals.forEach(mineral => html += `<input class="mineralRadio" type="radio" id=${mineral.id} name="mineral" value=${mineral.id} ${currentTransientState.currentMineral === mineral.id ? "checked" : ""}/><label for=${mineral.id}>${mineral.name} ${mineral.quantity}</label>`)
                 }
 

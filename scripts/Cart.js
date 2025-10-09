@@ -20,7 +20,6 @@ export const updateTransientState = async (e, key) => {
 
     transientState[keyMap[key]] = Number(e.target.value)
 
-    console.log(transientState)
     await render()
 }
 

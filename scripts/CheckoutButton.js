@@ -57,11 +57,8 @@ export const handleSubmit = async () => {
     const facilityMineralsResponse = await fetch(`http://localhost:8088/facilityMinerals?facilityId=${currentFacility}&mineralId=${currentMineral}`)
     const facilityMinerals = await facilityMineralsResponse.json()
     
-    console.log("Facility minerals found:", facilityMinerals) // Debug log
-    
     if (facilityMinerals.length > 0) {
         const facilityRecord = facilityMinerals[0]
-        console.log("Facility record:", facilityRecord) // Debug log
         
         const updatedFacilityQuantity = facilityRecord.quantity - 1
 
