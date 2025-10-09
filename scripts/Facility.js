@@ -44,8 +44,10 @@ export function getAvailableMinerals(selectedFacilityId) {
     }));
 }
 
+
 // Generate facility dropdown HTML
-export const Facility = () => {
+export const Facility = async () => {
+    await fetchDatabase()
   const facilities = getActiveFacilities();
   
   return `
