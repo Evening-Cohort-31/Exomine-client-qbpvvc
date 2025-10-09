@@ -1,6 +1,6 @@
-// import {Governor} from "./Governor.js"
-// import {Facility} from "./Facility.js"
-// import {Minerals} from "./Minerals.js"
+import { Governor } from "./Governor.js"
+import {Facility} from "./Facility.js"
+import { Minerals, updateCurrentFacility } from "./Minerals.js"
 import { Colony } from "./Colony.js";
 // import {Cart} from "./Cart.js"
 
@@ -11,17 +11,17 @@ export const render = async () => {
         </header>
         <article class="selections">
             <section class="selections__governor">
-                $ {Governor()}
+                ${await Governor()}
             </section>
             <section class="selections__facilities">
-                $ {Facility()}
+                ${await Facility()}
             </section>
         </article>
         <article class="colony_inventory">
                 ${await Colony()}
         </article>
         <article class="facility_inventory">
-                $ {Minerals()}
+                ${await Minerals()}
         </article>
         <article class="cart">
                 $ {Cart()}
@@ -30,6 +30,12 @@ export const render = async () => {
 
   const body = document.querySelector("body");
   body.innerHTML = html;
+  document.querySelector("#facility").addEventListener("change", updateCurrentFacility)
 };
 
-render();
+
+
+await render();
+
+
+
