@@ -10,6 +10,14 @@ export const Colony = async () => {
 
   let coloniesHTML = `<h2>${currentGovernor.length > 0 ? `${currentGovernor[0].colony.name + " Minerals"}` : "Colony Minerals"}</h2>`;
 
+  const colonyMineralResponse = await fetch(`http://localhost:8088/colonyMinerals?colonyId=${currentGovernor[0]?.colony.id}&_expand=mineral`)
+  const minerals = await colonyMineralResponse.json()
+
+
+  //TODO: Fetch colonyMineral that match the current Governor's colonyId, and display then in the html. 
+
+  minerals.forEach(mineral => coloniesHTML += `<p>${mineral.mineral.name + " " + mineral.quantity}</p>`)
+
   // const colonyOptions = colonies.map((colony) => {
   //   return `<option value= ${colony.id} ${currentTransientState.currentColony === colony.id ? "selected" : ""}>${colony.name}</option>`;
   // });
