@@ -1,20 +1,22 @@
-// import { setGovernorChoice } from "./transientState.js"
+import { getTransientState } from "./Cart.js"
 
 // setting up import for future transient state work ^
 
 export const Governor = async () => {
+    const currentTransientState = getTransientState();
     const response = await fetch("http://localhost:8088/governors")
     const governors = await response.json()
     // defined function making sure to use async and await while defining the cariable of governors to hold the array that is imported from the database. 
 
-    let governorHTML =  `<h2>Governors</h2><select id="resource">
+    let governorHTML =  `<h2>Governors</h2><select class="governorSelect">
         <option value="0">Choose a Governor...</option>`
 
         // set the beginning of the HTML so that it will be a select dropdown menu that firstly displays "Choose a Governor"
     
     
     const governorOptions = governors.map(governor => {
-        return `<option value="${governor.id}">${governor.name}</option>`
+
+        return `<option value=${governor.id} ${currentTransientState.currentGovernor === governor.id ? "selected" : ""}>${governor.name}</option>`
     })
 
     // created a map function that takes each governor and converts it to display as another option in the drop down menu
